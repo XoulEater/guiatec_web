@@ -61,25 +61,22 @@ import Input from "../components/Input.tsx";
 </Layout>
 <script>
   // FIXME: This is a temporary solution to avoid using a backend
-  /*
-  import { assistants, teachers } from "../lib/data.ts";
 
-  const users = [...assistants, ...teachers];
   const button = document.getElementById("submit-button");
   if (button) {
     button.addEventListener("click", () => {
       const email = document.getElementById("email") as HTMLInputElement;
       const password = document.getElementById("password") as HTMLInputElement;
-      const user = users.find(
-        (u) => u.email === email.value && u.password === password.value
-      );
-      if (user) {
-        localStorage.setItem("user", JSON.stringify(user));
-        window.location.href = "/team";
-      } else {
-        alert("Usuario o contraseña incorrectos");
-      }
+
+      const user = {
+        email: email.value,
+        password: password.value,
+        userType: "assistant",
+        campus: "CA",
+      };
+
+      localStorage.setItem("user", JSON.stringify(user));
+      window.location.href = "/team";
     });
   }
-  */
 </script>

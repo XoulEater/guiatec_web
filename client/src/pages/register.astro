@@ -1,7 +1,7 @@
 ---
 import Layout from "@/layouts/RegisterLayout.astro";
 import Input from "@/components/Input.tsx";
-import { Campus } from "@/lib/data.ts";
+import { Campus } from "@/lib/types.ts";
 ---
 
 <Layout title="Nuevo Profesor" subtitle="Ingrese sus datos">
@@ -93,13 +93,13 @@ import { Campus } from "@/lib/data.ts";
 </Layout>
 <script>
   import * as teachersService from "@/services/teacherService.ts";
-  import type { teacher } from "@/lib/types.ts";
-  import { Campus } from "@/lib/data.ts";
+  import type { Teacher } from "@/lib/types.ts";
+  import { Campus } from "@/lib/types.ts";
   // redirect function
   const button = document.getElementById("submit-button");
   if (button) {
     button.addEventListener("click", async () => {
-      const newTeacher: teacher = {
+      const newTeacher: Teacher = {
         name: (document.getElementById("Nombre") as HTMLInputElement).value,
         personalPNumber: (
           document.getElementById("Teléfono celular") as HTMLInputElement
