@@ -66,7 +66,7 @@ export default class TeacherDAO {
    * @param pCode code of the teacher
    * @returns the teacher with the given code
    */
-  public static async getTeacherByCode(pCode: string): Promise<Teacher | null> {
+  public static async getTeacherByCode(pCode: string): Promise<Teacher> {
     const teacher = await TeacherSchema.findOne({ id: pCode }).exec();
     return teacher ? new Teacher(teacher.toObject()) : null;
   }
