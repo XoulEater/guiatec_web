@@ -1,14 +1,13 @@
 // API fetch routes for teachers
 
-import type { teacher } from "@/lib/types";
-
-const API_URL = "http://localhost:1234/api";
+import type { Teacher } from "@/lib/types";
+import { API_URL } from "@/lib/api.ts";
 
 /**
  * Get all the teachers
  * @returns a promise with the teachers
  */
-export async function getAllTeachers(): Promise<teacher[]> {
+export async function getAllTeachers(): Promise<Teacher[]> {
   const response = await fetch(`${API_URL}/teachers`);
   return response.json();
 }
@@ -18,7 +17,7 @@ export async function getAllTeachers(): Promise<teacher[]> {
  * @param campus the campus
  * @returns a promise with the teachers
  */
-export async function getTeachersByCampus(campus: string): Promise<teacher[]> {
+export async function getTeachersByCampus(campus: string): Promise<Teacher[]> {
   const response = await fetch(`${API_URL}/teachers/campus/${campus}`);
   return response.json();
 }
@@ -28,7 +27,7 @@ export async function getTeachersByCampus(campus: string): Promise<teacher[]> {
  * @param code the code of the teacher
  * @returns a promise with the teacher
  */
-export async function getTeacherByCode(code: string): Promise<teacher> {
+export async function getTeacherByCode(code: string): Promise<Teacher> {
   const response = await fetch(`${API_URL}/teachers/${code}`);
   return response.json();
 }
@@ -38,7 +37,7 @@ export async function getTeacherByCode(code: string): Promise<teacher> {
  * @param teacher the teacher to create
  * @returns a promise with the new teacher
  */
-export async function createTeacher(teacher: teacher) {
+export async function createTeacher(teacher: Teacher) {
   const response = await fetch(`${API_URL}/teachers`, {
     method: "POST",
     headers: {
@@ -54,7 +53,7 @@ export async function createTeacher(teacher: teacher) {
  * @param teacher the teacher to update
  * @returns a promise with the updated teacher
  */
-export async function updateTeacher(teacher: teacher): Promise<teacher> {
+export async function updateTeacher(teacher: Teacher) {
   const response = await fetch(`${API_URL}/teachers/${teacher.id}`, {
     method: "PUT",
     headers: {
@@ -62,7 +61,7 @@ export async function updateTeacher(teacher: teacher): Promise<teacher> {
     },
     body: JSON.stringify(teacher),
   });
-  return response.json();
+  return response;
 }
 
 /**
@@ -71,9 +70,9 @@ export async function updateTeacher(teacher: teacher): Promise<teacher> {
  * @returns a promise with the deleted teacher
  */
 
-export async function deleteTeacher(code: string): Promise<teacher> {
+export async function deleteTeacher(code: string) {
   const response = await fetch(`${API_URL}/teachers/${code}`, {
     method: "DELETE",
   });
-  return response.json();
+  return response;
 }

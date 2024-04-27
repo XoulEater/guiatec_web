@@ -1,8 +1,8 @@
 import type { WorkPlan } from "@/lib/types.ts";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const WorkplansTable = () => {
-  const workPlans: WorkPlan[] = [];
+  const [workPlans, setWorkPlans] = useState<WorkPlan[]>([]);
 
   const loadWorkPlans = async () => {
     // TODO: fetch workplans

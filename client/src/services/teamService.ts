@@ -1,8 +1,7 @@
 // API fetch routes for team operations
 
 import type { Teacher } from "@/lib/types.ts";
-
-const API_URL = "http://localhost:1234/api";
+import { API_URL } from "@/lib/api.ts";
 
 /**
  * Get all the members

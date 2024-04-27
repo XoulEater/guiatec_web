@@ -46,6 +46,13 @@ export interface Teacher extends User {
   isLeader?: boolean; // if the teacher is the leader of the team
 }
 
+export interface Student extends User {
+  carnet: number; // unique identifier of the student
+  name: string; // full name of the student
+  email: string; // email of the student
+  personalPNumber: string; // personal phone number of the student
+}
+
 export interface Activity {
   id?: string; // unique identifier of the activity
   name: string; // name of the activity
