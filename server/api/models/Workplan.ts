@@ -2,11 +2,11 @@ import Activity from "./Activity";
 import WorkplanDTO from "../dtos/workplan";
 
 export default class Workplan {
-  private name: string = "";
-  private description: string = "";
-  private activities: Activity[] = [];
-  private year: number = 0;
-  private semester: number = 0;
+  private name: string;
+  private description: string;
+  private activities: Activity[];
+  private year: number;
+  private semester: number;
 
   // Constructor
   constructor(
