@@ -16,13 +16,19 @@ export default class Workplan {
     year?: number,
     semester?: number
   ) {
-    if (typeof nameOrDTO === "string") {
+    if (
+      typeof nameOrDTO === "string" &&
+      description &&
+      activities &&
+      year &&
+      semester
+    ) {
       this.name = nameOrDTO;
       this.description = description;
       this.activities = activities;
       this.year = year;
       this.semester = semester;
-    } else {
+    } else if (typeof nameOrDTO === "object") {
       this.name = nameOrDTO.name;
       this.description = nameOrDTO.description;
       this.activities = nameOrDTO.activities.map(

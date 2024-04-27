@@ -7,11 +7,10 @@ import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import teacherRoutes from "./routes/teacherRoutes";
-// import excelRoutes from "./routes/excelRoutes";
-// import teamRoutes from "./routes/teamRoutes";
-// import workplanRoutes from "./routes/workplanRoutes";
-// import activitiesRoutes from "./routes/activityRoute";
-// import studentRoutes from "./routes/studentRoutes";
+import excelRoutes from "./routes/excelRoutes";
+import teamRoutes from "./routes/teamRoutes";
+import workplanRoutes from "./routes/workplanRoutes";
+import studentRoutes from "./routes/studentRoutes";
 
 dotenv.config();
 
@@ -32,6 +31,10 @@ app.get("/", (req, res) => {
 
 // Routes
 app.use("/teachers", teacherRoutes);
+app.use("/excel", excelRoutes);
+app.use("/teams", teamRoutes);
+app.use("/workplans", workplanRoutes);
+app.use("/students", studentRoutes);
 
 mongoose.Promise = Promise;
 mongoose.connect(process.env.MONGO_CONNECTION_STRING || "");

@@ -26,7 +26,7 @@ export default class WorkplanDAO {
    * @param _id id of the workplan
    * @returns the workplan with the given code
    */
-  public static async getWorkplanById(_id: string): Promise<Workplan> {
+  public static async getWorkplanById(_id: string): Promise<Workplan | null> {
     const workplanData = await WorkplanSchema.findOne({ _id: _id }).exec();
     return workplanData ? new Workplan(workplanData.toObject()) : null;
   }

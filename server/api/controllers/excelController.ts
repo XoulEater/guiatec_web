@@ -8,6 +8,7 @@ import CampusENUM from "../models/campusENUM";
 // excel import
 import * as xlsx from "xlsx";
 import StudentDTO from "../dtos/student";
+import multer from "multer";
 
 /**
  * Class that handles the requests related to excel files

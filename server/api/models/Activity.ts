@@ -30,7 +30,21 @@ export default class Activity {
     status?: string,
     forum?: string
   ) {
-    if (typeof IDorDTO === "string") {
+    if (
+      typeof IDorDTO === "string" &&
+      name &&
+      description &&
+      startDate &&
+      publishDate &&
+      notificationInterval &&
+      type &&
+      responsibles &&
+      attachement &&
+      modality &&
+      link &&
+      status &&
+      forum
+    ) {
       this.name = name;
       this.description = description;
       this.startDate = startDate;
@@ -43,7 +57,7 @@ export default class Activity {
       this.link = link;
       this.status = status;
       this.forum = forum;
-    } else {
+    } else if (typeof IDorDTO !== "string") {
       this.name = IDorDTO.name;
       this.description = IDorDTO.description;
       this.startDate = IDorDTO.startDate;

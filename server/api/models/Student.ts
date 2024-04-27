@@ -15,18 +15,24 @@ export default class Student {
     personalPNumber?: number,
     campus?: CampusENUM
   ) {
-    if (typeof carnetOrStudentDTO === "number") {
+    if (
+      typeof carnetOrStudentDTO === "number" &&
+      name &&
+      email &&
+      personalPNumber &&
+      campus
+    ) {
       this.carnet = carnetOrStudentDTO;
       this.name = name;
       this.email = email;
       this.personalPNumber = personalPNumber;
       this.campus = campus;
-    } else {
+    } else if (typeof carnetOrStudentDTO !== "number") {
       this.carnet = carnetOrStudentDTO.carnet;
       this.name = carnetOrStudentDTO.name;
       this.email = carnetOrStudentDTO.email;
       this.personalPNumber = carnetOrStudentDTO.personalPNumber;
-      this.campus = carnetOrStudentDTO.campus;
+      this.campus = carnetOrStudentDTO.campus || CampusENUM.CA; // FIXME: default value
     }
   }
 

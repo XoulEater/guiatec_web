@@ -20,18 +20,28 @@ export default class Teacher extends User {
     isLeader?: boolean,
     photo?: string
   ) {
-    if (typeof IDorDTO === "string") {
+    if (
+      typeof IDorDTO === "string" &&
+      name &&
+      email &&
+      password &&
+      campus &&
+      officePNumber &&
+      personalPNumber &&
+      isLeader &&
+      photo
+    ) {
       super(name, email, password, photo, campus, IDorDTO);
       this.officePNumber = officePNumber;
       this.personalPNumber = personalPNumber;
       this.isLeader = isLeader;
       this.userType = "teacher";
-    } else {
+    } else if (typeof IDorDTO == "object") {
       super(
         IDorDTO.name,
         IDorDTO.email,
         IDorDTO.password,
-        IDorDTO.photo,
+        IDorDTO.photo || "",
         IDorDTO.campus,
         IDorDTO.id
       );

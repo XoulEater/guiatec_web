@@ -17,9 +17,9 @@ class User {
     password: string,
     photo: string,
     campus: Campus,
-    id?: string,
+    id?: string
   ) {
-    this.id = id;
+    this.id = id || "";
     this.name = name;
     this.email = email;
     this.password = password;
