@@ -40,4 +40,10 @@ mongoose.connection.once("open", () => {
   console.log("Conexión exitosa a la base de datos.");
 });
 
+app.listen(process.env.PORT || 3000, () => {
+  console.log(
+    `Server is running on port http://localhost:${process.env.PORT || 3000}`
+  );
+});
+
 export default app;
