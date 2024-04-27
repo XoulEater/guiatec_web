@@ -1,4 +1,4 @@
 { "version": 2, 
-"routes": [{ "src": "/(.*)", "destination": "/" }] ,
+"routes": [{ "src": "/(.*)", "dest": "/" }] ,
 "builds": [{ "src": "./src/index.ts", "use": "@vercel/node" }]
 }
