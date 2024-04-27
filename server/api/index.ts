@@ -6,7 +6,7 @@ import compression from "compression";
 import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-// import teacherRoutes from "./routes/teacherRoutes";
+import teacherRoutes from "./routes/teacherRoutes";
 // import excelRoutes from "./routes/excelRoutes";
 // import teamRoutes from "./routes/teamRoutes";
 // import workplanRoutes from "./routes/workplanRoutes";
@@ -29,6 +29,9 @@ app.use(compression());
 app.get("/", (req, res) => {
   res.send("Hello Vercel");
 });
+
+// Routes
+app.use("/teachers", teacherRoutes);
 
 mongoose.Promise = Promise;
 mongoose.connect(process.env.MONGO_CONNECTION_STRING || "");
