@@ -1,6 +1,6 @@
 ---
-import Layout from "@/layouts/LoginLayout.astro";
-import Input from "@/components/Input.tsx";
+import Layout from "../layouts/LoginLayout.astro";
+import Input from "../components/Input.tsx";
 ---
 
 <Layout title="Bienvenido !" subtitle="Ingrese sus datos">
@@ -13,7 +13,7 @@ import Input from "@/components/Input.tsx";
         placeHolderLG="Ingrese su correo"
         placeHolderSM="Correo"
         logo="/email.svg"
-        client:only
+        client:only="react"
       />
       <Input
         id="password"
@@ -22,7 +22,7 @@ import Input from "@/components/Input.tsx";
         placeHolderLG="Ingrese su contraseña"
         placeHolderSM="Contraseña"
         logo="/password.svg"
-        client:only
+        client:only="react"
       />
 
       <div class="flex justify-between w-full">

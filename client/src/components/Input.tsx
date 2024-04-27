@@ -9,7 +9,7 @@ interface Props {
   logo: string;
 }
 
-const MyComponent: React.FC<Props> = ({
+const Input: React.FC<Props> = ({
   id,
   title,
   formType,
@@ -54,4 +54,4 @@ const MyComponent: React.FC<Props> = ({
   );
 };
 
-export default MyComponent;
+export default Input;
