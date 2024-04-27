@@ -33,8 +33,13 @@ export class TeacherController {
     res: Response
   ): Promise<void> {
     const campus = req.params.campus;
-    const teachers = await TeacherDAO.getTeachersByCampus(campus);
-    res.json(teachers);
+
+    try {
+      const teachers = await TeacherDAO.getTeachersByCampus(campus);
+      res.json(teachers);
+    } catch (error) {
+      res.status(404).json({ message: "Campus not found" });
+    }
   }
   /**
    * Get a teacher by its code
@@ -46,8 +51,13 @@ export class TeacherController {
     res: Response
   ): Promise<void> {
     const code = req.params.code;
-    const teacher = await TeacherDAO.getTeacherByCode(code);
-    res.json(teacher);
+
+    try {
+      const teacher = await TeacherDAO.getTeacherByCode(code);
+      res.json(teacher);
+    } catch (error) {
+      res.status(404).json({ message: "Teacher not found" });
+    }
   }
 
   /**
@@ -76,7 +86,7 @@ export class TeacherController {
       await TeacherDAO.createTeacher(teacher);
       res.json({ message: "Teacher created" });
     } catch (error) {
-      res.status(400).json({ message: error.message });
+      res.status(400).json({ message: "Error creating teacher" });
     }
   }
 
@@ -92,8 +102,13 @@ export class TeacherController {
     const code = req.params.code;
     const teacherData: TeacherDTO = req.body;
     const teacher = new Teacher(teacherData);
-    await TeacherDAO.updateTeacher(code, teacher);
-    res.json({ message: "Teacher updated" });
+
+    try {
+      await TeacherDAO.updateTeacher(code, teacher);
+      res.json({ message: "Teacher updated" });
+    } catch (error) {
+      res.status(404).json({ message: "Teacher not found" });
+    }
   }
 
   /**
@@ -106,7 +121,12 @@ export class TeacherController {
     res: Response
   ): Promise<void> {
     const code = req.params.code;
-    await TeacherDAO.deleteTeacher(code);
-    res.json({ message: "Teacher deleted" });
+
+    try {
+      await TeacherDAO.deleteTeacher(code);
+      res.json({ message: "Teacher deleted" });
+    } catch (error) {
+      res.status(404).json({ message: "Teacher not found" });
+    }
   }
 }

@@ -17,9 +17,20 @@ export class ActivityController {
     res: Response
   ): Promise<void> {
     const workplanId = req.params.wid;
-    const workplan = await WorkplanDAO.getWorkplanById(workplanId);
 
-    res.json(workplan.getActivities());
+    let workplan;
+    try {
+      workplan = await WorkplanDAO.getWorkplanById(workplanId);
+    } catch (error) {
+      res.status(404).json({ message: "Workplan not found" });
+      return;
+    }
+
+    if (workplan) {
+      res.json(workplan.getActivities());
+    } else {
+      res.status(404).json({ message: "Activities not found" });
+    }
   }
 
   /**
@@ -35,9 +46,27 @@ export class ActivityController {
     const workplanId = req.params.wid;
 
     const activity = new Activity(activityDTO);
-    const workplan = await WorkplanDAO.getWorkplanById(workplanId);
+    let workplan;
+    try {
+      workplan = await WorkplanDAO.getWorkplanById(workplanId);
+    } catch (error) {
+      res.status(404).json({ message: "Workplan not found" });
+      return;
+    }
+
+    if (!workplan) {
+      res.status(404).json({ message: "Workplan not found" });
+      return;
+    }
+
     workplan.addActivity(activity);
-    await WorkplanDAO.updateWorkplan(workplanId, workplan);
+    try {
+      await WorkplanDAO.updateWorkplan(workplanId, workplan);
+    } catch (error) {
+      res.status(500).json({ message: "Error updating workplan" });
+      return;
+    }
+
     res.json("Activity created");
   }
 
@@ -52,7 +81,7 @@ export class ActivityController {
     res: Response
   ): Promise<void> {
     const activityId = req.params.id;
-    //await ActivityDAO.cancelActivity(activityId);
+    // TODO: await ActivityDAO.cancelActivity(activityId);
     res.json({ message: "Activity cancelled" });
   }
 }
