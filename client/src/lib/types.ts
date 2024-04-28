@@ -61,7 +61,7 @@ export interface Activity {
   publicationDate?: Date; // date of publication of the activity
   prevDays?: number; // days before the activity to send the reminder
   reminderInterval: number; // interval of the reminder of the activity
-  responsibles: Teacher[]; // list of teachers responsible for the activity
+  responsibles: string[]; // list of teachers responsible for the activity
   type: ActivityType; // type of the activity
   modality: Modalities; // modality of the activity
   status: ActivityStatus; // status of the activity

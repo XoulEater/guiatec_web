@@ -1,13 +1,14 @@
 import type { WorkPlan } from "@/lib/types.ts";
+import * as workplanService from "@/services/workplanService";
 import { useEffect, useState } from "react";
 
 const WorkplansTable = () => {
   const [workPlans, setWorkPlans] = useState<WorkPlan[]>([]);
 
   const loadWorkPlans = async () => {
-    // TODO: fetch workplans
-    // const res = await teamService.getAllWorkplans();
-    // setWorkPlans(res);
+    const res = await workplanService.getAllWorkplans();
+    setWorkPlans(res);
+    console.log(res);
   };
 
   useEffect(() => {

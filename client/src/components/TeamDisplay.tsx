@@ -1,6 +1,7 @@
 import React from "react";
 import TeamTabs from "@/components/TeamTabs";
 import type { User, WorkPlan } from "../lib/types";
+import * as workplanService from "../services/workplanService";
 
 const TeamDisplay: React.FC = () => {
   const userData = localStorage.getItem("user");
@@ -13,10 +14,11 @@ const TeamDisplay: React.FC = () => {
     // redirect to teachers page
     window.location.href = "/teachers";
   }
-  function handleNewPlan() {
+  async function handleNewPlan() {
     // create a new plan and redirect to it
-    // TODO: this is a mock plan, the real plan should be created in the backend
-    // redirect to the new plan page
+    const id = await workplanService.createWorkplan();
+    console.log(id);
+    window.location.href = `/workplan/${id}`;
   }
 
   return (
