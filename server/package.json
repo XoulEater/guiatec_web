@@ -7,7 +7,8 @@
     "start": "nodemon ./api/index.ts",
     "dev": "nodemon ./api/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc --outDir public"
+    "build": "tsc --outDir public",
+    "vercel-build": "echo hello "
   },
   "keywords": [],
   "author": "",
